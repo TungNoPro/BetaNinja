@@ -3,13 +3,17 @@ local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false, Sa
 
 OrionLib:MakeNotification({
 	Name = "Logged In!",
-	Content = You Logged In!",
+	Content = "You Logged In!",
 	Image = "rbxassetid://4483345998",
 	Time = 5
 })
 
 _G.Key = "Hello"
-_G.KeyInpuy = "string"
+_G.KeyInput = "string"
+
+function Hub()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TungNoPro/NinjaFighting/main/NinjaFighting"))()
+end
 
 function CorrectKeyNotification()
 OrionLib:MakeNotification({
@@ -20,7 +24,7 @@ OrionLib:MakeNotification({
 })
 end
 
-function InorrectKeyNotification()
+function IncorrectKeyNotification()
 OrionLib:MakeNotification({
 	Name = "Inorrect Key!",
 	Content = "You have entered incorrect key!",
@@ -37,7 +41,7 @@ local Tab = Window:MakeTab({
 
 Tab:AddTextbox({
 	Name = "Enter Key",
-	Default = "Key",
+	Default = "",
 	TextDisappear = true,
 	Callback = function(Value)
 		_G.KeyInput = Value
@@ -45,17 +49,13 @@ Tab:AddTextbox({
 })
 
 Tab:AddButton({
-	Name = "Check Key!",
+	Name = "Check Key",
 	Callback = function()
-if _G.InputKey == _G.Key then
+if _G.KeyInput == _G.Key then
  CorrectKeyNotification()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TungNoPro/NinjaFighting/main/NinjaFighting"))()
-      		else
+Hub()
+ else
  IncorrectKeyNotification()
-  	end    
+  	end   
+end
 })
-
-
-
-
-
